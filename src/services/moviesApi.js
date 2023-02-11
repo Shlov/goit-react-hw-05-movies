@@ -10,3 +10,16 @@ export function fetchTrending() {
     }
   });
 }
+
+export function fetchQuery(q, page = 1) {
+  const URL = 'https://api.themoviedb.org/3/search/movie';
+  return axios.get(URL, {
+    params: {
+      api_key: KEY,
+      query: q,
+      language: 'en-US',
+      page: page,
+      include_adult: false,
+    }
+  });
+}
