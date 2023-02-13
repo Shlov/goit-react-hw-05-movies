@@ -23,3 +23,13 @@ export function fetchQuery(q, page = 1) {
     }
   });
 }
+
+export function fetchMovie(id) {
+  const URL = `https://api.themoviedb.org/3/movie/${id}`;
+  return axios.get(URL, {
+    params: {
+      api_key: KEY,
+      language: 'en-US',
+    }
+  }); 
+}

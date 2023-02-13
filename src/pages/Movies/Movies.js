@@ -18,13 +18,13 @@ export const Movies = () => {
       const movies = await (await fetchQuery(searchQuery)).data.results
       setMovies(movies);
       setDownload(false);
-      console.log(movies)
+      // console.log(movies)
     }
     fatchMovies()
   }, [searchQuery])
 
   const handleFormSubmit = (newSearchQuery) => {
-
+    setSearchQuery(newSearchQuery)
   }
 
 

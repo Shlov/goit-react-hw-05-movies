@@ -13,7 +13,7 @@ export const Home = () => {
       const movies = await (await fetchTrending()).data.results
       setMovies(movies);
       setDownload(false);
-      console.log(movies)
+      // console.log(movies)
     }
     fatchMovies()
   }, [])
