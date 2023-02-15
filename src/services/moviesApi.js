@@ -33,3 +33,14 @@ export function fetchMovie(id) {
     }
   }); 
 }
+
+export function fetchMovieCast(id) {
+  const URL = `https://api.themoviedb.org/3/movie/${id}/credits`;
+  return axios.get(URL, {
+    params: {
+      api_key: KEY,
+      language: 'en-US',
+    }
+  }); 
+}
+

@@ -25,21 +25,18 @@ export const MovieDetails = () => {
 
   return (
     <>
-    <div>
-      <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt="movie"/>
-      <h3>{movie.original_title}</h3>
-      <p>{movie.status}</p>
-    </div>
-    <StyledLink to='cast'>
-      <button type="button">Cast</button>
-    </StyledLink>
-
-    <StyledLink to='reviews'>
-      {/* <button type="button">Reviews</button> */}
-      Reviews
-    </StyledLink>
-    <Outlet />
-
+      <div>
+        <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt="movie"/>
+        <h3>{movie.original_title}</h3>
+        <p>{movie.status}</p>
+      </div>
+      <StyledLink to='cast'>
+        <button type="button">Cast</button>
+      </StyledLink>
+      <StyledLink to='reviews'>
+        <button type="button">Reviews</button>
+      </StyledLink>
+      <Outlet />
     </>
   )
 }
