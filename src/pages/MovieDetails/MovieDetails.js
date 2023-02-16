@@ -15,9 +15,9 @@ export const MovieDetails = () => {
 
   
   useEffect(()=> {
-    if (movie === {}) {
-      return
-    }
+    // if (movie === {}) {
+    //   return
+    // }
 
     const fetchMovieDetails = async () => {
       // setMovie(await fetchMovie(id))
@@ -28,6 +28,7 @@ export const MovieDetails = () => {
     
   },[id])
 
+  if (!movie) return
 
   return (
     <>

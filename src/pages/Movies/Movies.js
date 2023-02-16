@@ -15,7 +15,6 @@ export const Movies = () => {
   useEffect(() => {
     if (searchQuery === '') {
       const searchMovieUrl = searchMovie.get('query')
-      // console.log(searchMovieUrl)
       setSearchQuery(searchMovieUrl ? searchMovieUrl : '')
       return
     }
@@ -26,7 +25,7 @@ export const Movies = () => {
       setDownload(false);
     }
     fatchMovies()
-  }, [searchQuery])
+  }, [searchMovie, searchQuery])
   
   const handleFormSubmit = (newSearchQuery) => {
     // console.log(searchMovie)

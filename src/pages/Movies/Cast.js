@@ -8,10 +8,6 @@ export const Cast = () => {
   const [castArr, setCastArr] = useState([])
   
   useEffect(()=> {
-    if (castArr === []) {
-      return
-    }
-
     const fetchMovieDetails = async () => {
       const {cast} = await fetchMovieCast(id)
       setCastArr(cast)
