@@ -15,7 +15,7 @@ export const Movies = () => {
   useEffect(() => {
     if (searchQuery === '') {
       const searchMovieUrl = searchMovie.get('query')
-      console.log(searchMovieUrl)
+      // console.log(searchMovieUrl)
       setSearchQuery(searchMovieUrl ? searchMovieUrl : '')
       return
     }
@@ -29,7 +29,7 @@ export const Movies = () => {
   }, [searchQuery])
   
   const handleFormSubmit = (newSearchQuery) => {
-    console.log(searchMovie)
+    // console.log(searchMovie)
     setSearchMovie({query: newSearchQuery})
     setSearchQuery(newSearchQuery)
   }

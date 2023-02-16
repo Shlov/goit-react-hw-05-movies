@@ -34,13 +34,25 @@ export function fetchMovie(id) {
   }); 
 }
 
-export function fetchMovieCast(id) {
+export async function fetchMovieCast(id) {
   const URL = `https://api.themoviedb.org/3/movie/${id}/credits`;
-  return axios.get(URL, {
+  const cast = await axios.get(URL, {
     params: {
       api_key: KEY,
       language: 'en-US',
     }
-  }); 
+  });
+  return cast.data 
+}
+
+export async function fetchMovieReviews(id) {
+  const URL = `https://api.themoviedb.org/3/movie/${id}/reviews`;
+  const reviews = await axios.get(URL, {
+    params: {
+      api_key: KEY,
+      language: 'en-US',
+    }
+  });
+  return reviews.data 
 }
 

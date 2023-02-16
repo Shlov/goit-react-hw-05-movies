@@ -8,29 +8,29 @@ export const Cast = () => {
   const [cast, setCast] = useState([])
   
   useEffect(()=> {
-    // if (cast === {}) {
-    //   return
-    // }
+    if (cast === []) {
+      return
+    }
 
     const fetchMovieDetails = async () => {
-      const castData = await (await fetchMovieCast(id)).data
-      setCast(castData.cast)
-      console.log(castData.cast)
+      const {cast} = await fetchMovieCast(id)
+      setCast(cast)
+      console.log(cast)
     }
     fetchMovieDetails()
-    console.log(cast)
     
   },[id])
-
+  
+  // console.log(cast)
   return (
     <ul>
-      {/* {cast.cast.map(actor => {
-        <li>
-        <img src={`https://image.tmdb.org/t/p/w500${actor.profile_path}`} alt="movie"></img>
-        <h3>{actor.name}</h3>
-        <p>{actor.character}</p>
-      </li>
-      })} */}
+      {cast.map(({credit_id, name, character, profile_path}) => 
+        <li key={credit_id}>
+          <img src={`https://image.tmdb.org/t/p/w500${profile_path}`} alt="movie"></img>
+          <h3>{name}</h3>
+          <p>{character}</p>
+        </li>
+      )}
       
     </ul>
   )
