@@ -36,7 +36,7 @@ export const Movies = () => {
   
   const handleFormSubmit = () => {
     const nextSearchParams = searchMovie.get('query')
-    if (!nextSearchParams.trim()) {
+    if (!nextSearchParams.trim() || nextSearchParams === '') {
       return toast.error('Enter a search query')
     }
     // setSearchMovie({query: newSearchQuery})
@@ -52,7 +52,7 @@ export const Movies = () => {
 
   return (
     <>
-      <h2>Movies</h2>
+      <h2>Search by name</h2>
       <Searchbar onSubmit={handleFormSubmit} onChange = {updateQueryString}/>
       {download && <Loader/>}
       {!download && Boolean(movies.length) && <MoviesList movies = {movies}/>}

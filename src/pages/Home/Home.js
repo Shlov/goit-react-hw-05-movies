@@ -21,7 +21,7 @@ export const Home = () => {
 
   return (
     <>
-      <h2>Home</h2>
+      <h2>Trending movies today</h2>
       {download && <Loader/>}
       {!download && <MoviesList movies = {movies}/>}
       

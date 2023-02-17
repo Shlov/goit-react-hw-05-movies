@@ -16,7 +16,7 @@ export const Reviews = () => {
     const fetchMovieDetails = async () => {
       const {results} = await fetchMovieReviews(id)
       setReviews(results)
-      console.log(results)
+      // console.log(results)
     }
     fetchMovieDetails()
     

@@ -1,18 +1,14 @@
 import { StyledLink } from "components/Header/StyledLink.styled";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, Outlet, useLocation, useParams } from "react-router-dom"
 import { fetchMovie } from "services/moviesApi";
+import defImg from '../../img/no-poster.png'
 
 export const MovieDetails = () => {
   const {id} = useParams();
   const [movie, setMovie] = useState({})
   const location = useLocation()
-
-  const backLinkHref = location.state?.from ?? "/movies";
-  // console.log(location)
-  // console.log(backLinkHref)
-
-
+  const btnBackHref = useRef(location.state?.from ?? "/movies")
   
   useEffect(()=> {
     // if (movie === {}) {
@@ -32,9 +28,9 @@ export const MovieDetails = () => {
 
   return (
     <>
-      <Link to={backLinkHref}>Back movies</Link>
+      <Link to={btnBackHref.current}>Back movies</Link>
       <div>
-        <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt="movie"/>
+        <img src={movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : defImg} alt={movie.original_title} />
         <h3>{movie.original_title}</h3>
         <p>{movie.status}</p>
       </div>
