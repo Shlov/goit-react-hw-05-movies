@@ -1,5 +1,3 @@
-import { useState } from "react";
-import toast from 'react-hot-toast';
 import { Btn, Form, Input } from "./Searchbar.styled";
 
 import PropTypes from 'prop-types';
