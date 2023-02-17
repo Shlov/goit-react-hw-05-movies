@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { fetchMovieCast } from "services/moviesApi";
 import defImg from '../../img/no-image.png'
 
-export const Cast = () => {
+const Cast = () => {
   const {id} = useParams();
 
   const [castArr, setCastArr] = useState([])
@@ -31,3 +31,5 @@ export const Cast = () => {
     </ul>
   )
 }
+
+export default Cast

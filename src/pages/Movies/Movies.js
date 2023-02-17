@@ -1,26 +1,29 @@
 import { Loader } from "components/Loader/Loader";
 import { MoviesList } from "components/MoviesList/MoviesList";
 import { Searchbar } from "components/Searchbar/Searchbar"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { toast } from "react-hot-toast";
 import { useSearchParams } from "react-router-dom";
 import { fetchQuery } from "services/moviesApi";
 
-export const Movies = () => {
+const Movies = () => {
   const [download, setDownload] = useState(false);
   const [movies, setMovies] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
-
   const [searchMovie, setSearchMovie] = useSearchParams();
 
-  if (searchQuery === '') {
-    const nextParams = searchMovie.get('query');
-    setSearchQuery(nextParams ? nextParams : '')
-  }
+  const nextSearchParams = searchMovie.get('query') ?? '';
+  const startSearchHref = useRef(nextSearchParams)
+  console.log('nextSearchParams', `'${nextSearchParams.trim()}'`)
+
+  useEffect(() => {
+    setSearchQuery(startSearchHref.current)
+  },[])
   
   useEffect(() => {
-    if (searchQuery === '') return
-
+    if (searchQuery === '') {
+      return
+    } 
     const fatchMovies = async () => {
       setDownload(true);
       const movies = await (await fetchQuery(searchQuery)).data.results
@@ -31,8 +34,7 @@ export const Movies = () => {
   }, [searchQuery])
 
   const handleFormSubmit = () => {
-    const nextSearchParams = searchMovie.get('query')
-    if (!nextSearchParams.trim() || nextSearchParams === '') {
+    if (!(nextSearchParams.trim()) || nextSearchParams === '') {
       return toast.error('Enter a search query')
     }
     setSearchQuery(nextSearchParams)
@@ -54,3 +56,5 @@ export const Movies = () => {
     </>
   )
 }
+
+export default Movies
