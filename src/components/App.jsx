@@ -1,4 +1,5 @@
 import { lazy } from "react";
+// import { lazy, Suspense } from "react";
 import { Toaster } from "react-hot-toast";
 import { Route, Routes } from "react-router-dom";
 // import { Home } from "../pages/Home/Home";
@@ -6,8 +7,9 @@ import { Route, Routes } from "react-router-dom";
 // import { MovieDetails } from "pages/MovieDetails/MovieDetails";
 // import { Cast } from "pages/Movies/Cast";
 // import { Reviews } from "pages/Movies/Reviews";
-import { Header } from "./Header/Header";
+// import { Header } from "./Header/Header";
 
+const Header = lazy(() => import('./Header/Header'))
 const Home = lazy(() => import('../pages/Home/Home'));
 const Movies = lazy(() => import('../pages/Movies/Movies'));
 const MovieDetails = lazy(() => import('pages/MovieDetails/MovieDetails'));
@@ -18,6 +20,7 @@ export const App = () => {
   return (
     <>
       <Header />
+      {/* <Suspense fallback={<div>Loading...</div>}></Suspense> */}
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/movies" element={<Movies/>}/>

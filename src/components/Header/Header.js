@@ -1,12 +1,15 @@
+import { HeaderEl } from "./Header.styled"
 import { StyledLink } from "./StyledLink.styled"
 
-export const Header = () => {
+const Header = () => {
   return (
-    <div>
+    <HeaderEl>
       <nav>
         <StyledLink to="/">Home</StyledLink>
         <StyledLink to="/movies">Movies</StyledLink>
       </nav>
-    </div>
+    </HeaderEl>
   )
 }
+
+export default Header

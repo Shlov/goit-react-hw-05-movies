@@ -10,10 +10,14 @@ const Home = () => {
 
   useEffect(() => {
     const fatchMovies = async () => {
-      const movies = await (await fetchTrending()).data.results
-      setMovies(movies);
-      setDownload(false);
-      // console.log(movies)
+      try {
+        const movies = await (await fetchTrending()).data.results
+        setMovies(movies);
+      } catch (error) {
+        console.log(error)
+      } finally {
+        setDownload(false);
+      }
     }
     fatchMovies()
   }, [])

@@ -24,11 +24,18 @@ const Movies = () => {
     if (searchQuery === '') {
       return
     } 
+
     const fatchMovies = async () => {
       setDownload(true);
-      const movies = await (await fetchQuery(searchQuery)).data.results
-      setMovies(movies);
-      setDownload(false);
+      try {
+        const movies = await (await fetchQuery(searchQuery)).data.results
+        setMovies(movies);
+      } catch (error) {
+        console.log(error)
+        toast.error('Error')
+      } finally {
+        setDownload(false);
+      }
     }
     fatchMovies()
   }, [searchQuery])

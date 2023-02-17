@@ -1,5 +1,6 @@
 import { StyledLink } from "components/Header/StyledLink.styled";
 import { useEffect, useRef, useState } from "react";
+import { toast } from "react-hot-toast";
 import { Link, Outlet, useLocation, useParams } from "react-router-dom"
 import { fetchMovie } from "services/moviesApi";
 import defImg from '../../img/no-poster.png'
@@ -11,14 +12,15 @@ const MovieDetails = () => {
   const btnBackHref = useRef(location.state?.from ?? "/movies")
   
   useEffect(()=> {
-    // if (movie === {}) {
-    //   return
-    // }
 
     const fetchMovieDetails = async () => {
-      // setMovie(await fetchMovie(id))
-      const mov = await (await fetchMovie(id)).data
-      setMovie(mov)
+      try {
+        const mov = await (await fetchMovie(id)).data
+        setMovie(mov)
+      } catch (error) {
+        console.log(error)
+        toast.error('Error')
+      }
     }
     fetchMovieDetails()
     
