@@ -1,4 +1,5 @@
 import { Btn, Form, Input } from "./Searchbar.styled";
+import {GiBugNet} from 'react-icons/gi';
 
 import PropTypes from 'prop-types';
 
@@ -20,7 +21,6 @@ export const Searchbar = ({onSubmit, onChange}) => {
 
     return (
         <Form onSubmit={handleSubmit}>
-          <Btn type="submit" />
           <Input
             onChange={(e) => onChange(e.currentTarget.value)}
             type="text"
@@ -29,6 +29,9 @@ export const Searchbar = ({onSubmit, onChange}) => {
             // autofocus
             placeholder="Search movie"
           />
+          <Btn type="submit">
+              <GiBugNet/>
+          </Btn>
         </Form>
     )
 }

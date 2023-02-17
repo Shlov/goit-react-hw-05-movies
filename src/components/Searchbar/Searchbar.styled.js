@@ -35,10 +35,10 @@ export const Btn = styled.button`
   width: 48px;
   height: 48px;
   border: 0;
-  /* background-image: url('https://image.flaticon.com/icons/svg/149/149852.svg'); */
-  /* background-size: 40%; */
-  /* background-repeat: no-repeat; */
-  /* background-position: center; */
+  /* background-image: url('https://image.flaticon.com/icons/svg/149/149852.svg');
+  background-size: 40%;
+  background-repeat: no-repeat;
+  background-position: center; */
   opacity: 0.6;
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
@@ -74,8 +74,10 @@ export const Input = styled.input`
   font-size: 20px;
   border: none;
   outline: none;
-  padding-left: 4px;
-  padding-right: 4px;
+  /* padding-left: 4px; */
+  /* padding-right: 4px; */
+  padding: 12px 4px;
+  background-color: aliceblue;
 
   ::placeholder {
     font: inherit;
