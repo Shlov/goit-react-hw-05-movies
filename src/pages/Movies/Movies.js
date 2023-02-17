@@ -11,33 +11,37 @@ export const Movies = () => {
   const [searchQuery, setSearchQuery] = useState('');
 
   const [searchMovie, setSearchMovie] = useSearchParams();
+  const searchMovieUrl = searchMovie.get('query')
 
   useEffect(() => {
     if (searchQuery === '') {
-      const searchMovieUrl = searchMovie.get('query')
       setSearchQuery(searchMovieUrl ? searchMovieUrl : '')
       return
     }
     const fatchMovies = async () => {
       setDownload(true);
-      const movies = await (await fetchQuery(searchQuery)).data.results
+      const movies = await (await fetchQuery(searchMovieUrl)).data.results
       setMovies(movies);
       setDownload(false);
     }
     fatchMovies()
   }, [searchMovie, searchQuery])
   
-  const handleFormSubmit = (newSearchQuery) => {
-    // console.log(searchMovie)
-    setSearchMovie({query: newSearchQuery})
-    setSearchQuery(newSearchQuery)
+  const handleFormSubmit = () => {
+    // setSearchMovie({query: newSearchQuery})
+    setSearchQuery(searchMovieUrl)
+  }
+
+  const updateQueryString= (query) => {
+    const nextParams = query !== '' ? {query} : {};
+    setSearchMovie(nextParams)
   }
 
 
   return (
     <>
       <h2>Movies</h2>
-      <Searchbar onSubmit={handleFormSubmit}/>
+      <Searchbar onSubmit={handleFormSubmit} onChange = {updateQueryString}/>
       {download && <Loader/>}
       {!download && Boolean(movies.length) && <MoviesList movies = {movies}/>}
     </>

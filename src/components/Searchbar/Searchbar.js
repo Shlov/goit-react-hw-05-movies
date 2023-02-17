@@ -5,28 +5,27 @@ import { Btn, Form, Input } from "./Searchbar.styled";
 import PropTypes from 'prop-types';
 
 
-export const Searchbar = ({onSubmit}) => {
+export const Searchbar = ({onSubmit, onChange}) => {
 
-  const [tagImg, setTagImg] = useState('');
+  // const handleQuetyChange = (evnt) => {
+  //   onChange({query: evnt.currentTarget.value})
+  // }
 
-  const handleTagChange = (evnt) => {
-    setTagImg(evnt.currentTarget.value.toLowerCase())
-  }
-
-  const handleSubmit = (evnt) => {
-    evnt.preventDefault()
-    if (tagImg.trim() === '') {
-      return toast.error('Enter a search query')
-    }
-    onSubmit(tagImg)
-  }
+  // const handleSubmit = (evnt) => {
+  //   evnt.preventDefault()
+  //   if (tagImg.trim() === '') {
+  //     return toast.error('Enter a search query')
+  //   }
+  //   onSubmit(tagImg)
+  // }
 
     return (
-        <Form onSubmit={handleSubmit}>
-          <Btn type="submit"/>
+        <Form >
+          <Btn type="submit"onSubmit={onSubmit}/>
           <Input
-            onChange={handleTagChange}
+            onChange={(e) => onChange(e.currentTarget.value)}
             type="text"
+            // value={query}
             // autocomplete="off"
             // autofocus
             placeholder="Search movie"
