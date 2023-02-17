@@ -12,14 +12,15 @@ export const Movies = () => {
   const [searchQuery, setSearchQuery] = useState('');
 
   const [searchMovie, setSearchMovie] = useSearchParams();
-  // const searchMovieUrl = searchMovie.get('query')
 
+  if (searchQuery === '') {
+    const nextParams = searchMovie.get('query');
+    setSearchQuery(nextParams ? nextParams : '')
+  }
+  
   useEffect(() => {
-    if (searchQuery === '') {
-      const nextParams = searchMovie.get('query');
-      setSearchQuery(nextParams ? nextParams : '')
-      return
-    }
+    if (searchQuery === '') return
+
     const fatchMovies = async () => {
       setDownload(true);
       const movies = await (await fetchQuery(searchQuery)).data.results
@@ -29,17 +30,11 @@ export const Movies = () => {
     fatchMovies()
   }, [searchQuery])
 
-  // const getSearchQuery = () => {
-  //   console.log('getSQ', searchMovie.get('query'))
-  //   return searchMovie.get('query')
-  // }
-  
   const handleFormSubmit = () => {
     const nextSearchParams = searchMovie.get('query')
     if (!nextSearchParams.trim() || nextSearchParams === '') {
       return toast.error('Enter a search query')
     }
-    // setSearchMovie({query: newSearchQuery})
     setSearchQuery(nextSearchParams)
     console.log('Submit', nextSearchParams)
   }
