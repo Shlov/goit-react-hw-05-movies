@@ -11,17 +11,18 @@ export const Searchbar = ({onSubmit, onChange}) => {
   //   onChange({query: evnt.currentTarget.value})
   // }
 
-  // const handleSubmit = (evnt) => {
-  //   evnt.preventDefault()
-  //   if (tagImg.trim() === '') {
-  //     return toast.error('Enter a search query')
-  //   }
-  //   onSubmit(tagImg)
-  // }
+  const handleSubmit = (evnt) => {
+    evnt.preventDefault()
+    // console.dir(evnt.target.input)
+    // if (evnt.currentTarget.value === '') {
+    //   return toast.error('Enter a search query')
+    // }
+    onSubmit()
+  }
 
     return (
-        <Form >
-          <Btn type="submit"onSubmit={onSubmit}/>
+        <Form onSubmit={handleSubmit}>
+          <Btn type="submit" />
           <Input
             onChange={(e) => onChange(e.currentTarget.value)}
             type="text"

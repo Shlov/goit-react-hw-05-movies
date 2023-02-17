@@ -2,6 +2,7 @@ import { Loader } from "components/Loader/Loader";
 import { MoviesList } from "components/MoviesList/MoviesList";
 import { Searchbar } from "components/Searchbar/Searchbar"
 import { useState, useEffect } from "react"
+import { toast } from "react-hot-toast";
 import { useSearchParams } from "react-router-dom";
 import { fetchQuery } from "services/moviesApi";
 
@@ -11,25 +12,36 @@ export const Movies = () => {
   const [searchQuery, setSearchQuery] = useState('');
 
   const [searchMovie, setSearchMovie] = useSearchParams();
-  const searchMovieUrl = searchMovie.get('query')
+  // const searchMovieUrl = searchMovie.get('query')
 
   useEffect(() => {
     if (searchQuery === '') {
-      setSearchQuery(searchMovieUrl ? searchMovieUrl : '')
+      const nextParams = searchMovie.get('query');
+      setSearchQuery(nextParams ? nextParams : '')
       return
     }
     const fatchMovies = async () => {
       setDownload(true);
-      const movies = await (await fetchQuery(searchMovieUrl)).data.results
+      const movies = await (await fetchQuery(searchQuery)).data.results
       setMovies(movies);
       setDownload(false);
     }
     fatchMovies()
-  }, [searchMovie, searchQuery])
+  }, [searchQuery])
+
+  // const getSearchQuery = () => {
+  //   console.log('getSQ', searchMovie.get('query'))
+  //   return searchMovie.get('query')
+  // }
   
   const handleFormSubmit = () => {
+    const nextSearchParams = searchMovie.get('query')
+    if (!nextSearchParams.trim()) {
+      return toast.error('Enter a search query')
+    }
     // setSearchMovie({query: newSearchQuery})
-    setSearchQuery(searchMovieUrl)
+    setSearchQuery(nextSearchParams)
+    console.log('Submit', nextSearchParams)
   }
 
   const updateQueryString= (query) => {

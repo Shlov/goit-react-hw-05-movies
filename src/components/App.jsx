@@ -1,6 +1,7 @@
 import { MovieDetails } from "pages/MovieDetails/MovieDetails";
 import { Cast } from "pages/Movies/Cast";
 import { Reviews } from "pages/Movies/Reviews";
+import { Toaster } from "react-hot-toast";
 import { Route, Routes } from "react-router-dom";
 import { Home } from "../pages/Home/Home";
 import { Movies } from "../pages/Movies/Movies";
@@ -18,6 +19,7 @@ export const App = () => {
           <Route path="reviews" element={<Reviews/>}/>
         </Route>
       </Routes>
+      <Toaster />
     </>
   );
 };
