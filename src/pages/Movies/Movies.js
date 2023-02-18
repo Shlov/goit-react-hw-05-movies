@@ -46,7 +46,6 @@ export default function Movies() {
       return toast.error('Enter a search query')
     }
     setSearchQuery(nextSearchParams)
-    console.log('Submit', nextSearchParams)
   }
 
   const updateQueryString= (query) => {
