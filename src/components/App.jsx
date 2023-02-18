@@ -1,6 +1,6 @@
 import { lazy } from "react";
 // import { lazy, Suspense } from "react";
-import { Toaster } from "react-hot-toast";
+
 import { Route, Routes } from "react-router-dom";
 
 // import SharedLayout from "./SharedLayout/SharedLayout";
@@ -31,7 +31,7 @@ export const App = () => {
           </Route>
         </Route>
       </Routes>
-      <Toaster />
+
     </>
   );
 };
