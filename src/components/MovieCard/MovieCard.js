@@ -1,11 +1,10 @@
-import { StyledLink } from "components/Header/StyledLink.styled"
+// import { StyledLink } from "components/Header/StyledLink.styled"
 import { NavLink, useLocation } from "react-router-dom"
 import defImg from '../../img/no-poster.png'
 
 
 
 export const MovieCard = ({movie}) => {
-  // console.log(movie)
 
   const location = useLocation();
   return (
