@@ -5,7 +5,8 @@ import { Link, Outlet, useLocation, useParams } from "react-router-dom"
 import { fetchMovie } from "services/moviesApi";
 import defImg from '../../img/no-poster.png'
 
-const MovieDetails = () => {
+export default function MoviesDetails() {
+  
   const {id} = useParams();
   const [movie, setMovie] = useState({})
   const location = useLocation()
@@ -47,4 +48,3 @@ const MovieDetails = () => {
   )
 }
 
-export default MovieDetails

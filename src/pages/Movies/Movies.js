@@ -6,7 +6,8 @@ import { toast } from "react-hot-toast";
 import { useSearchParams } from "react-router-dom";
 import { fetchQuery } from "services/moviesApi";
 
-const Movies = () => {
+export default function Movies() {
+  
   const [download, setDownload] = useState(false);
   const [movies, setMovies] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
@@ -64,4 +65,3 @@ const Movies = () => {
   )
 }
 
-export default Movies

@@ -3,7 +3,9 @@ import { useParams } from "react-router-dom";
 import { fetchMovieCast } from "services/moviesApi";
 import defImg from '../../img/no-image.png'
 
-const Cast = () => {
+
+export default function Cast() {
+  
   const {id} = useParams();
 
   const [castArr, setCastArr] = useState([])
@@ -12,7 +14,6 @@ const Cast = () => {
     const fetchMovieDetails = async () => {
       const {cast} = await fetchMovieCast(id)
       setCastArr(cast)
-      // console.log(cast)
     }
     fetchMovieDetails()
     
@@ -32,4 +33,3 @@ const Cast = () => {
   )
 }
 
-export default Cast

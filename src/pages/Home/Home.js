@@ -3,7 +3,9 @@ import { MoviesList } from "components/MoviesList/MoviesList"
 import { useEffect, useState } from "react"
 import { fetchTrending } from "services/moviesApi"
 
-const Home = () => {
+
+
+export default function Home() {
 
   const [download, setDownload] = useState(true);
   const [movies, setMovies] = useState([])
@@ -34,4 +36,3 @@ const Home = () => {
   )
 }
 
-export default Home

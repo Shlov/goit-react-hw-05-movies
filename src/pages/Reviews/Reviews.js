@@ -2,21 +2,18 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchMovieReviews } from "services/moviesApi";
 
-const Reviews = () => {
+
+export default function Reviews() {
 
   const {id} = useParams();
 
   const [reviews, setReviews] = useState([])
   
   useEffect(()=> {
-    // if (reviews === []) {
-    //   return
-    // }
 
     const fetchMovieDetails = async () => {
       const {results} = await fetchMovieReviews(id)
       setReviews(results)
-      // console.log(results)
     }
     fetchMovieDetails()
     
@@ -34,4 +31,3 @@ const Reviews = () => {
   )
 }
 
-export default Reviews

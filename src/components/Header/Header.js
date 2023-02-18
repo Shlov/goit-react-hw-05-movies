@@ -1,7 +1,8 @@
 import { HeaderEl } from "./Header.styled"
 import { StyledLink } from "./StyledLink.styled"
 
-const Header = () => {
+export default function Header() {
+  
   return (
     <HeaderEl>
       <nav>
@@ -12,4 +13,3 @@ const Header = () => {
   )
 }
 
-export default Header
