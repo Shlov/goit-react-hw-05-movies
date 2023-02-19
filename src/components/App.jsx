@@ -1,5 +1,4 @@
 import { lazy } from "react";
-// import { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 
 // import SharedLayout from "./SharedLayout/SharedLayout";
